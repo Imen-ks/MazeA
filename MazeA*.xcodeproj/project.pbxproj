@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		A83B940529E9DFCA0065253B /* MazeA_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B940429E9DFCA0065253B /* MazeA_App.swift */; };
-		A83B940729E9DFCA0065253B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B940629E9DFCA0065253B /* ContentView.swift */; };
 		A83B940929E9DFCB0065253B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B940829E9DFCB0065253B /* Assets.xcassets */; };
 		A83B940C29E9DFCB0065253B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B940B29E9DFCB0065253B /* Preview Assets.xcassets */; };
 		A83B941629E9DFCB0065253B /* MazeA_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B941529E9DFCB0065253B /* MazeA_Tests.swift */; };
 		A83B942029E9DFCB0065253B /* MazeA_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B941F29E9DFCB0065253B /* MazeA_UITests.swift */; };
 		A83B942229E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B942129E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift */; };
+		A83B942F29E9E3370065253B /* MazeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B942E29E9E3370065253B /* MazeCell.swift */; };
+		A83B943129E9E5720065253B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B943029E9E5720065253B /* MainScreenView.swift */; };
+		A83B943329EAA0FB0065253B /* MazeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B943229EAA0FB0065253B /* MazeCellView.swift */; };
+		A83B943729EAAE000065253B /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B943629EAAE000065253B /* Maze.swift */; };
+		A83B944129EC29890065253B /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944029EC29890065253B /* SampleData.swift */; };
+		A83B944629ECE7F20065253B /* AStarAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944529ECE7F20065253B /* AStarAlgorithm.swift */; };
+		A83B944D29ED61F80065253B /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944C29ED61F80065253B /* MazeView.swift */; };
+		A83B944F29ED62A80065253B /* SolveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944E29ED62A80065253B /* SolveButtonView.swift */; };
+		A83B945329ED9C1A0065253B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945229ED9C1A0065253B /* Step.swift */; };
+		A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945429EDEC6B0065253B /* ResetButtonView.swift */; };
+		A83B945729EE03F70065253B /* LoadMazeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945629EE03F70065253B /* LoadMazeButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +46,6 @@
 /* Begin PBXFileReference section */
 		A83B940129E9DFCA0065253B /* MazeA*.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MazeA*.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83B940429E9DFCA0065253B /* MazeA_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeA_App.swift; sourceTree = "<group>"; };
-		A83B940629E9DFCA0065253B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A83B940829E9DFCB0065253B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83B940B29E9DFCB0065253B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A83B941129E9DFCB0065253B /* MazeA*Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MazeA*Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +53,17 @@
 		A83B941B29E9DFCB0065253B /* MazeA*UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MazeA*UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83B941F29E9DFCB0065253B /* MazeA_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeA_UITests.swift; sourceTree = "<group>"; };
 		A83B942129E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeA_UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		A83B942E29E9E3370065253B /* MazeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCell.swift; sourceTree = "<group>"; };
+		A83B943029E9E5720065253B /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		A83B943229EAA0FB0065253B /* MazeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCellView.swift; sourceTree = "<group>"; };
+		A83B943629EAAE000065253B /* Maze.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
+		A83B944029EC29890065253B /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		A83B944529ECE7F20065253B /* AStarAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarAlgorithm.swift; sourceTree = "<group>"; };
+		A83B944C29ED61F80065253B /* MazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
+		A83B944E29ED62A80065253B /* SolveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveButtonView.swift; sourceTree = "<group>"; };
+		A83B945229ED9C1A0065253B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		A83B945429EDEC6B0065253B /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
+		A83B945629EE03F70065253B /* LoadMazeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMazeButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				A83B940429E9DFCA0065253B /* MazeA_App.swift */,
-				A83B940629E9DFCA0065253B /* ContentView.swift */,
+				A83B943A29EAAE340065253B /* Models */,
+				A83B943B29EAAE460065253B /* Views */,
 				A83B940829E9DFCB0065253B /* Assets.xcassets */,
 				A83B940A29E9DFCB0065253B /* Preview Content */,
 			);
@@ -125,6 +146,31 @@
 				A83B942129E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift */,
 			);
 			path = "MazeA*UITests";
+			sourceTree = "<group>";
+		};
+		A83B943A29EAAE340065253B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A83B943629EAAE000065253B /* Maze.swift */,
+				A83B942E29E9E3370065253B /* MazeCell.swift */,
+				A83B945229ED9C1A0065253B /* Step.swift */,
+				A83B944529ECE7F20065253B /* AStarAlgorithm.swift */,
+				A83B944029EC29890065253B /* SampleData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A83B943B29EAAE460065253B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A83B943029E9E5720065253B /* MainScreenView.swift */,
+				A83B944C29ED61F80065253B /* MazeView.swift */,
+				A83B943229EAA0FB0065253B /* MazeCellView.swift */,
+				A83B944E29ED62A80065253B /* SolveButtonView.swift */,
+				A83B945429EDEC6B0065253B /* ResetButtonView.swift */,
+				A83B945629EE03F70065253B /* LoadMazeButtonView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +303,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A83B940729E9DFCA0065253B /* ContentView.swift in Sources */,
+				A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */,
+				A83B943129E9E5720065253B /* MainScreenView.swift in Sources */,
+				A83B944D29ED61F80065253B /* MazeView.swift in Sources */,
+				A83B944629ECE7F20065253B /* AStarAlgorithm.swift in Sources */,
+				A83B943329EAA0FB0065253B /* MazeCellView.swift in Sources */,
+				A83B945329ED9C1A0065253B /* Step.swift in Sources */,
+				A83B942F29E9E3370065253B /* MazeCell.swift in Sources */,
+				A83B944129EC29890065253B /* SampleData.swift in Sources */,
 				A83B940529E9DFCA0065253B /* MazeA_App.swift in Sources */,
+				A83B944F29ED62A80065253B /* SolveButtonView.swift in Sources */,
+				A83B943729EAAE000065253B /* Maze.swift in Sources */,
+				A83B945729EE03F70065253B /* LoadMazeButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +473,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MazeA*/Preview Content\"";
+				DEVELOPMENT_TEAM = Q34TQR7SAN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MazeA*/Preview Content\"";
+				DEVELOPMENT_TEAM = Q34TQR7SAN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

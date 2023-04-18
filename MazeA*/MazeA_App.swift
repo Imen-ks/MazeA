@@ -11,7 +11,8 @@ import SwiftUI
 struct MazeA_App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainScreenView()
+                .environmentObject(Maze.createSampleData())
         }
     }
 }
