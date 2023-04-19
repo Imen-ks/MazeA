@@ -266,3 +266,30 @@ extension Maze {
         return nil
     }
 }
+
+extension Maze {
+    @MainActor func customizeMazeWith(rows: Int, columns: Int, startPoint: CGPoint?, goalPoint: CGPoint?) -> Maze {
+        // temporary maze for customization process
+        let maze = Maze(rows: rows, columns: columns, startPoint: CGPoint(x: 0, y: 0), goalPoint: CGPoint(x: 0, y: 0))
+        maze.rows = rows
+        maze.columns = columns
+        maze.cells = Array(repeating: [MazeCell] (repeating: MazeCell(), count: columns), count: rows)
+        
+        for i in 0..<rows {
+            for j in 0..<columns {
+                maze.cells[i][j].coordinate = CGPoint(x: i, y: j)
+            }
+        }
+        
+        if let startPoint = startPoint {
+            maze.startPoint = startPoint
+            maze.cells[Int(startPoint.x)][Int(startPoint.y)].isStartPoint = true
+        }
+        
+        if let goalPoint = goalPoint {
+            maze.goalPoint = goalPoint
+            maze.cells[Int(goalPoint.x)][Int(goalPoint.y)].isGoalPoint = true
+        }
+        return maze
+    }
+}

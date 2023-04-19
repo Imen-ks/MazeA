@@ -72,7 +72,7 @@ struct MazeDescriptionView: View {
                                     .cornerRadius(16)
                     ) {
                         Text(solutionPath)
-                            .font(.title)
+                            .font(.title2)
                             .bold()
                     }
                     .padding(.top)
@@ -80,6 +80,7 @@ struct MazeDescriptionView: View {
                     Spacer()
                 }
                 .padding()
+                .padding(.horizontal)
             }
             .foregroundColor(.white)
             .ignoresSafeArea(.container, edges: .bottom)

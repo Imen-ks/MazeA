@@ -34,7 +34,7 @@ struct MainScreenView: View {
                             MazeView()
                             
                             HStack {
-                                SolveButtonView(orientation: .vertical, action: {
+                                SolveButtonView(orientation: .vertical) {
                                     Task {
                                         await maze.getSolution()
                                         if let _ = maze.solution {
@@ -43,7 +43,7 @@ struct MainScreenView: View {
                                             isNotSolvable = true
                                         }
                                     }
-                                })
+                                }
                                 .padding(.horizontal)
                                 .disabled(isSolved)
                                 .sheet(isPresented: $isNotSolvable) {
@@ -51,24 +51,24 @@ struct MainScreenView: View {
                                         .presentationDetents([.medium])
                                 }
                                 
-                                ResetButtonView(orientation: .vertical, action: {
+                                ResetButtonView(orientation: .vertical) {
                                     maze.reset()
-                                })
+                                }
                                 .padding(.horizontal)
                                 .disabled(isSolving)
                             }
                             .padding(.top, 10)
                             .padding(.bottom, 10)
                             
-                            LoadMazeButtonView(orientation: .vertical, action: {
+                            LoadMazeButtonView(orientation: .vertical) {
                                 maze.loadMaze()
-                            })
+                            }
                         }
                      } else {
                          HStack {
-                             LoadMazeButtonView(orientation: .horizontal, action: {
+                             LoadMazeButtonView(orientation: .horizontal) {
                                  maze.loadMaze()
-                             })
+                             }
                              .padding(.bottom, 8)
                              
                              MazeView()
@@ -76,7 +76,7 @@ struct MainScreenView: View {
                                  .padding(.leading, 120) // for adjusting the misbehavior of HStack on rotation - to be checked
                              
                              VStack {
-                                 SolveButtonView(orientation: .horizontal, action: {
+                                 SolveButtonView(orientation: .horizontal) {
                                      Task {
                                          await maze.getSolution()
                                          if let _ = maze.solution {
@@ -85,7 +85,7 @@ struct MainScreenView: View {
                                              isNotSolvable = true
                                          }
                                      }
-                                 })
+                                 }
                                  .padding(.vertical)
                                  .disabled(isSolved)
                                  .sheet(isPresented: $isNotSolvable) {
@@ -93,9 +93,9 @@ struct MainScreenView: View {
                                          .presentationDetents([.medium])
                                  }
                                  
-                                 ResetButtonView(orientation: .horizontal, action: {
+                                 ResetButtonView(orientation: .horizontal) {
                                      maze.reset()
-                                 })
+                                 }
                                  .padding(.vertical)
                                  .disabled(isSolving)
                              }

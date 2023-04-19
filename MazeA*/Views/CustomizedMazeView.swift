@@ -6,22 +6,90 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CustomizedMazeView: View {
     @EnvironmentObject var maze: Maze
     @Binding var isCustomizingMaze: Bool
+    @State private var rows = ""
+    @State private var columns = ""
+    @State private var startPoint: CGPoint?
+    @State private var goalPoint: CGPoint?
+    @State private var isSelectingStartPoint = false
+    @State private var isSelectingGoalPoint = false
+    @State private var showAlert = false
+    
     var body: some View {
-        Button {
-            // temporary logic for test purpose - to be updated
-            maze.customizeMazeWith(rows: 8, columns: 8, startPoint: CGPoint(x: 0, y: 0), goalPoint: CGPoint(x: 7, y: 7))
-            isCustomizingMaze = false
-        } label: {
-            Text("Create")
-                .font(.largeTitle)
-                .bold()
-                .padding()
+        NavigationStack {
+            ZStack(alignment: .leading) {
+                Color.indigo
+                ScrollView {
+                    Section(header: Text("CUSTOMIZE YOUR OWN MAZE").font(.title2).bold()) {
+                        InputNumberView(property: $rows, headline: "Number of rows", subHeadline: "(between 1 & 16)")
+                        InputNumberView(property: $columns, headline: "Number of columns", subHeadline: "(between 1 & 9)")
+                            . padding(.bottom)
+                        
+                        HStack {
+                            VStack {
+                                StartGoalButtonView(isCustomizingMaze: $isCustomizingMaze, rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint, label: "Select Start") {
+                                    isSelectingStartPoint = true
+                                }
+                                .padding(.top, startPoint == nil ? 0 : 28)
+                                
+                                if let startPoint = startPoint {
+                                    Text("(\(Int(startPoint.x) + 1), \(Int(startPoint.y) + 1))")
+                                }
+                            }
+                            VStack {
+                                StartGoalButtonView(isCustomizingMaze: $isCustomizingMaze, rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint, label: "Select Goal") {
+                                    isSelectingGoalPoint = true
+                                }
+                                .padding(.top, goalPoint == nil ? 0 : 28)
+                                
+                                if let goalPoint = goalPoint {
+                                    Text("(\(Int(goalPoint.x) + 1), \(Int(goalPoint.y) + 1))")
+                                }
+                            }
+                        } 
+                        Button {
+                            if Int(rows) ?? 0 > 16 || Int(rows) ?? 0 <= 0 || Int(columns) ?? 0 > 9 || Int(columns) ?? 0 <= 0 {
+                                showAlert = true
+                                startPoint = nil
+                                goalPoint = nil
+                            } else {
+                                maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint ?? CGPoint(), goalPoint: goalPoint ?? CGPoint())
+                                isCustomizingMaze = false
+                            }
+                        } label: {
+                            Text("Create")
+                                .font(.title)
+                                .bold()
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .cornerRadius(16)
+                        .padding(.top, 100)
+                        .disabled(Int(rows) == nil || Int(columns) == nil || startPoint == nil || goalPoint == nil)
+                        .alert(isPresented: $showAlert) {
+                            Alert(title: Text("Invalid number of rows or columns"), message: Text("For display convenience, please select a number of rows between 1 & 16 and a number of columns between 1 & 9."), dismissButton: .default(Text("Ok")))
+                        }
+                    }
+                }
+                .padding(.top)
+            }
+            .foregroundColor(.white)
+            .ignoresSafeArea(.container, edges: .bottom)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isCustomizingMaze = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .bold()
+                            .padding(.top, 10)
+                    }
+                }
+            }
         }
-        .buttonStyle(.borderedProminent)
     }
 }
 

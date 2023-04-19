@@ -27,6 +27,9 @@
 		A8851ABD29EF4F0700D9313C /* NoSolutionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */; };
 		A8851ABF29EF6E5C00D9313C /* MazeDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */; };
 		A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC029EF771300D9313C /* CustomizedMazeView.swift */; };
+		A8851AC429EFFEC000D9313C /* InputNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC329EFFEC000D9313C /* InputNumberView.swift */; };
+		A8851AC629F003C500D9313C /* SelectCoordinatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */; };
+		A8851AC829F045EB00D9313C /* StartGoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC729F045EB00D9313C /* StartGoalButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSolutionModalView.swift; sourceTree = "<group>"; };
 		A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDescriptionView.swift; sourceTree = "<group>"; };
 		A8851AC029EF771300D9313C /* CustomizedMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedMazeView.swift; sourceTree = "<group>"; };
+		A8851AC329EFFEC000D9313C /* InputNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNumberView.swift; sourceTree = "<group>"; };
+		A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCoordinatesView.swift; sourceTree = "<group>"; };
+		A8851AC729F045EB00D9313C /* StartGoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGoalButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,11 +179,14 @@
 				A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */,
 				A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */,
 				A8851AC029EF771300D9313C /* CustomizedMazeView.swift */,
+				A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */,
 				A83B944C29ED61F80065253B /* MazeView.swift */,
 				A83B943229EAA0FB0065253B /* MazeCellView.swift */,
 				A83B944E29ED62A80065253B /* SolveButtonView.swift */,
 				A83B945429EDEC6B0065253B /* ResetButtonView.swift */,
 				A83B945629EE03F70065253B /* LoadMazeButtonView.swift */,
+				A8851AC329EFFEC000D9313C /* InputNumberView.swift */,
+				A8851AC729F045EB00D9313C /* StartGoalButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -314,8 +323,11 @@
 			files = (
 				A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */,
 				A83B943129E9E5720065253B /* MainScreenView.swift in Sources */,
+				A8851AC829F045EB00D9313C /* StartGoalButtonView.swift in Sources */,
 				A83B944D29ED61F80065253B /* MazeView.swift in Sources */,
+				A8851AC629F003C500D9313C /* SelectCoordinatesView.swift in Sources */,
 				A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */,
+				A8851AC429EFFEC000D9313C /* InputNumberView.swift in Sources */,
 				A83B944629ECE7F20065253B /* AStarAlgorithm.swift in Sources */,
 				A8851ABD29EF4F0700D9313C /* NoSolutionModalView.swift in Sources */,
 				A83B943329EAA0FB0065253B /* MazeCellView.swift in Sources */,
