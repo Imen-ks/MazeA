@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import SwiftUI
 
 @MainActor
 final class Maze: ObservableObject {
-    let rows: Int
-    let columns: Int
+    var rows: Int
+    var columns: Int
     var startPoint: CGPoint
     var goalPoint: CGPoint
     @Published var cells: [[MazeCell]]
@@ -59,13 +58,118 @@ final class Maze: ObservableObject {
     func reset() {
         if let solution = solution {
             for point in solution {
-                if point != startPoint && point != goalPoint {
-                    resetVisited(atRow: Int(point.x), column: Int(point.y))
-                }
+                resetVisited(atRow: Int(point.x), column: Int(point.y))
             }
-            self.solution = []
+            self.solution = nil
         }
         isSolved = false
+    }
+    
+    func displaySolution() -> String {
+        let solution = algorithm.shortestPath(from: startPoint, to: goalPoint)
+        if let solution = solution {
+            var path = [String]()
+            for point in solution {
+                path.append("(\(Int(point.x) + 1), \(Int(point.y) + 1))")
+            }
+            return path.joined(separator: ", ")
+        }
+        return "There is no solution to this maze"
+    }
+    
+    func customizeMazeWith(rows: Int, columns: Int, startPoint: CGPoint, goalPoint: CGPoint) {
+        self.rows = rows
+        self.columns = columns
+        self.startPoint = startPoint
+        self.goalPoint = goalPoint
+        self.cells = Array(repeating: [MazeCell] (repeating: MazeCell(), count: columns), count: rows)
+        self.algorithm.maze = self
+        
+        for i in 0..<rows {
+            for j in 0..<columns {
+                cells[i][j].coordinate = CGPoint(x: i, y: j)
+            }
+        }
+        setStartPoint(atRow: Int(startPoint.x), column: Int(startPoint.y))
+        removeWall(atRow: Int(startPoint.x), column: Int(startPoint.y))
+        setGoalPoint(atRow: Int(goalPoint.x), column: Int(goalPoint.y))
+        removeWall(atRow: Int(goalPoint.x), column: Int(goalPoint.y))
+    }
+    
+    func loadMaze() {
+        // temporary logic for test purpose -  to be updated
+        self.rows = 16
+        self.columns = 9
+        self.startPoint = CGPoint(x: 2, y: 2)
+        self.goalPoint = CGPoint(x: 14, y: 8)
+        self.cells = Array(repeating: [MazeCell] (repeating: MazeCell(), count: columns), count: rows)
+        self.algorithm.maze = self
+        
+        for i in 0..<rows {
+            for j in 0..<columns {
+                cells[i][j].coordinate = CGPoint(x: i, y: j)
+            }
+        }
+        setStartPoint(atRow: Int(startPoint.x), column: Int(startPoint.y))
+        removeWall(atRow: Int(startPoint.x), column: Int(startPoint.y))
+        setGoalPoint(atRow: Int(goalPoint.x), column: Int(goalPoint.y))
+        removeWall(atRow: Int(goalPoint.x), column: Int(goalPoint.y))
+        
+        removeWall(atRow: 14, column: 8)
+        removeWall(atRow: 1, column: 2)
+        removeWall(atRow: 1, column: 3)
+        removeWall(atRow: 1, column: 4)
+        removeWall(atRow: 1, column: 5)
+        removeWall(atRow: 1, column: 6)
+        removeWall(atRow: 1, column: 7)
+        removeWall(atRow: 2, column: 4)
+        removeWall(atRow: 2, column: 7)
+        removeWall(atRow: 3, column: 4)
+        removeWall(atRow: 3, column: 5)
+        removeWall(atRow: 3, column: 6)
+        removeWall(atRow: 3, column: 7)
+        removeWall(atRow: 4, column: 2)
+        removeWall(atRow: 4, column: 3)
+        removeWall(atRow: 4, column: 4)
+        removeWall(atRow: 4, column: 6)
+        removeWall(atRow: 5, column: 1)
+        removeWall(atRow: 5, column: 2)
+        removeWall(atRow: 5, column: 6)
+        removeWall(atRow: 6, column: 2)
+        removeWall(atRow: 6, column: 3)
+        removeWall(atRow: 6, column: 4)
+        removeWall(atRow: 6, column: 6)
+        removeWall(atRow: 7, column: 3)
+        removeWall(atRow: 7, column: 6)
+        removeWall(atRow: 8, column: 1)
+        removeWall(atRow: 8, column: 2)
+        removeWall(atRow: 8, column: 3)
+        removeWall(atRow: 8, column: 6)
+        removeWall(atRow: 9, column: 2)
+        removeWall(atRow: 9, column: 6)
+        removeWall(atRow: 9, column: 7)
+        removeWall(atRow: 10, column: 2)
+        removeWall(atRow: 10, column: 3)
+        removeWall(atRow: 10, column: 4)
+        removeWall(atRow: 10, column: 7)
+        removeWall(atRow: 11, column: 4)
+        removeWall(atRow: 11, column: 5)
+        removeWall(atRow: 11, column: 7)
+        removeWall(atRow: 12, column: 2)
+        removeWall(atRow: 12, column: 3)
+        removeWall(atRow: 12, column: 4)
+        removeWall(atRow: 12, column: 5)
+        removeWall(atRow: 12, column: 7)
+        removeWall(atRow: 12, column: 7)
+        removeWall(atRow: 13, column: 3)
+        removeWall(atRow: 13, column: 5)
+        removeWall(atRow: 13, column: 6)
+        removeWall(atRow: 13, column: 7)
+        removeWall(atRow: 14, column: 1)
+        removeWall(atRow: 14, column: 2)
+        removeWall(atRow: 14, column: 3)
+        removeWall(atRow: 14, column: 5)
+        removeWall(atRow: 14, column: 7)
     }
 }
 
@@ -74,12 +178,20 @@ extension Maze {
         cells[row][column].isStartPoint = true
     }
     
+    func isStartPoint(atRow row: Int, column: Int) -> Bool {
+        cells[row][column].isStartPoint
+    }
+    
     func removeStartPoint(atRow row: Int, column: Int) {
         cells[row][column].isStartPoint = false
     }
     
     func setGoalPoint(atRow row: Int, column: Int) {
         cells[row][column].isGoalPoint = true
+    }
+    
+    func isGoalPoint(atRow row: Int, column: Int) -> Bool {
+        cells[row][column].isGoalPoint
     }
     
     func removeGoalPoint(atRow row: Int, column: Int) {

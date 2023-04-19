@@ -14,7 +14,7 @@ class AStarAlgorithm {
     
     @MainActor func shortestPath(from start: CGPoint, to end: CGPoint) -> [CGPoint]? {
         // Resetting both lists in case they're not empty at function call
-        openList = []
+        openList = [] // this list is sorted by ascending order of fScore
         closedList = []
         
         // appending the start point to the openList
@@ -63,7 +63,7 @@ class AStarAlgorithm {
                     step.setPreviousStep(previousStep: currentStep)
                     // we compute the hScore
                     step.hScore = manhattanDistance(from: step.coordinate, to: end)
-                    // and we add the new version
+                    // and we add the step to the openList
                     insertStep(step: step)
                 }
             }
@@ -79,8 +79,8 @@ class AStarAlgorithm {
             maze?.adjacentRightCellForCell(atCoordinate: atCoordinate)
         ]
         return adjacentCoords
-            .compactMap { $0 }
-            .filter ({ maze?.isWall(atRow: Int($0.x), column: Int($0.y)) == false })
+                .compactMap { $0 }
+                .filter ({ maze?.isWall(atRow: Int($0.x), column: Int($0.y)) == false })
     }
     
     func insertStep(step: Step) {
@@ -98,8 +98,7 @@ class AStarAlgorithm {
         var shortestPath: [CGPoint] = []
         var currentStep = currentStep
         
-        // looping through the chain list of previousStep attributes to reconstruct the solution
-        
+        // looping through the chain list of previousStep attributes to reconstruct the solution        
         while let previousStep = currentStep.previousStep {
             shortestPath.insert(currentStep.coordinate, at: 0)
             currentStep = previousStep

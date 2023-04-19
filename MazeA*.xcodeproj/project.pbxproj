@@ -24,6 +24,9 @@
 		A83B945329ED9C1A0065253B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945229ED9C1A0065253B /* Step.swift */; };
 		A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945429EDEC6B0065253B /* ResetButtonView.swift */; };
 		A83B945729EE03F70065253B /* LoadMazeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945629EE03F70065253B /* LoadMazeButtonView.swift */; };
+		A8851ABD29EF4F0700D9313C /* NoSolutionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */; };
+		A8851ABF29EF6E5C00D9313C /* MazeDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */; };
+		A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC029EF771300D9313C /* CustomizedMazeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +67,9 @@
 		A83B945229ED9C1A0065253B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		A83B945429EDEC6B0065253B /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
 		A83B945629EE03F70065253B /* LoadMazeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMazeButtonView.swift; sourceTree = "<group>"; };
+		A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSolutionModalView.swift; sourceTree = "<group>"; };
+		A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDescriptionView.swift; sourceTree = "<group>"; };
+		A8851AC029EF771300D9313C /* CustomizedMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedMazeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				A83B943029E9E5720065253B /* MainScreenView.swift */,
+				A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */,
+				A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */,
+				A8851AC029EF771300D9313C /* CustomizedMazeView.swift */,
 				A83B944C29ED61F80065253B /* MazeView.swift */,
 				A83B943229EAA0FB0065253B /* MazeCellView.swift */,
 				A83B944E29ED62A80065253B /* SolveButtonView.swift */,
@@ -306,10 +315,13 @@
 				A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */,
 				A83B943129E9E5720065253B /* MainScreenView.swift in Sources */,
 				A83B944D29ED61F80065253B /* MazeView.swift in Sources */,
+				A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */,
 				A83B944629ECE7F20065253B /* AStarAlgorithm.swift in Sources */,
+				A8851ABD29EF4F0700D9313C /* NoSolutionModalView.swift in Sources */,
 				A83B943329EAA0FB0065253B /* MazeCellView.swift in Sources */,
 				A83B945329ED9C1A0065253B /* Step.swift in Sources */,
 				A83B942F29E9E3370065253B /* MazeCell.swift in Sources */,
+				A8851ABF29EF6E5C00D9313C /* MazeDescriptionView.swift in Sources */,
 				A83B944129EC29890065253B /* SampleData.swift in Sources */,
 				A83B940529E9DFCA0065253B /* MazeA_App.swift in Sources */,
 				A83B944F29ED62A80065253B /* SolveButtonView.swift in Sources */,

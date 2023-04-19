@@ -11,6 +11,10 @@ struct MainScreenView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @EnvironmentObject var maze: Maze
+    @State private var isNotSolvable = false
+    @State private var showDescription = false
+    @State private var isCustomizingMaze = false
+    
     var isSolving: Bool {
         maze.isSolving
     }
@@ -33,10 +37,19 @@ struct MainScreenView: View {
                                 SolveButtonView(orientation: .vertical, action: {
                                     Task {
                                         await maze.getSolution()
+                                        if let _ = maze.solution {
+                                            isNotSolvable = false
+                                        } else {
+                                            isNotSolvable = true
+                                        }
                                     }
                                 })
                                 .padding(.horizontal)
                                 .disabled(isSolved)
+                                .sheet(isPresented: $isNotSolvable) {
+                                    NoSolutionModalView()
+                                        .presentationDetents([.medium])
+                                }
                                 
                                 ResetButtonView(orientation: .vertical, action: {
                                     maze.reset()
@@ -48,28 +61,37 @@ struct MainScreenView: View {
                             .padding(.bottom, 10)
                             
                             LoadMazeButtonView(orientation: .vertical, action: {
-                                // Missing logic for maze uploading
+                                maze.loadMaze()
                             })
                         }
                      } else {
                          HStack {
                              LoadMazeButtonView(orientation: .horizontal, action: {
-                                 // Missing logic for maze uploading
+                                 maze.loadMaze()
                              })
                              .padding(.bottom, 8)
                              
                              MazeView()
                                  .rotationEffect(.degrees(-90))
-                                 .padding(.leading, 120) // to adjust the misbehavior of HStack on rotation - to be checked
+                                 .padding(.leading, 120) // for adjusting the misbehavior of HStack on rotation - to be checked
                              
                              VStack {
                                  SolveButtonView(orientation: .horizontal, action: {
                                      Task {
                                          await maze.getSolution()
+                                         if let _ = maze.solution {
+                                             isNotSolvable = false
+                                         } else {
+                                             isNotSolvable = true
+                                         }
                                      }
                                  })
                                  .padding(.vertical)
                                  .disabled(isSolved)
+                                 .sheet(isPresented: $isNotSolvable) {
+                                     NoSolutionModalView()
+                                         .presentationDetents([.medium])
+                                 }
                                  
                                  ResetButtonView(orientation: .horizontal, action: {
                                      maze.reset()
@@ -77,7 +99,7 @@ struct MainScreenView: View {
                                  .padding(.vertical)
                                  .disabled(isSolving)
                              }
-                             .padding(.leading, 120) // to adjust the misbehavior of HStack on rotation - to be checked
+                             .padding(.leading, 120) // for adjusting the misbehavior of HStack on rotation - to be checked
                              .padding(.trailing, 50)
                          }
                      }
@@ -87,22 +109,28 @@ struct MainScreenView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        // Missing logic for maze description
+                        showDescription = true
                     } label: {
                         Image(systemName: "info.circle")
                             .font(.title)
                             .bold()
                             .padding(.top, 25)
                     }
+                    .sheet(isPresented: $showDescription) {
+                        MazeDescriptionView(showDescription: $showDescription)
+                    }
                 }
                 ToolbarItem {
                     Button {
-                        // Missing logic for maze creation
+                        isCustomizingMaze = true
                     } label: {
                         Image(systemName: "plus")
                             .font(.title)
                             .bold()
                             .padding(.top, 25)
+                    }
+                    .sheet(isPresented: $isCustomizingMaze) {
+                        CustomizedMazeView(isCustomizingMaze: $isCustomizingMaze)
                     }
                 }
             }
@@ -111,8 +139,18 @@ struct MainScreenView: View {
 }
 
 struct MainScreenView_Previews: PreviewProvider {
+    struct PreviewWrapper: View {
+        @State private var isNotSolvable = false
+        @State private var showDescription = false
+        @State private var isCustomizingMaze = false
+        
+        var body: some View {
+            MainScreenView()
+                .environmentObject(Maze.createSampleData())
+        }
+    }
+    
     static var previews: some View {
-        MainScreenView()
-            .environmentObject(Maze.createSampleData())
+        PreviewWrapper()
     }
 }

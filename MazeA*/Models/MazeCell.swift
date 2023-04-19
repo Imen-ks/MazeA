@@ -29,3 +29,12 @@ struct MazeCell: Identifiable, Equatable {
     var coordinate: CGPoint?
     var size = cellSize
 }
+
+extension MazeCell: CustomStringConvertible {
+    var description: String {
+        if let coordinate = coordinate {
+            return "(\(Int(coordinate.x) + 1), \(Int(coordinate.y) + 1))"
+        }
+        else { return "" }
+    }
+}
