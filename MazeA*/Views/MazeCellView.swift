@@ -39,27 +39,11 @@ struct MazeCellView: View {
     }
 
     var body: some View {
-//        let path = Path(rect)
-//        path.fill(color)
-//            .overlay(path.stroke(Color("Dark"), lineWidth: CGFloat(strokeLineWidth)))
-//            .onTapGesture {
-//                action()
-//            }
-        
-//        Canvas { context, size in
-//            context.stroke(path, with: .color(Color("Dark")), lineWidth: CGFloat(strokeLineWidth))
-//            context.fill(path, with: .color(color))
-//            context.draw(Image(image), in: rect)
-//        }
-//        .onTapGesture {
-//            action()
-//        }
-        
         Image(image)
             .resizable()
             .scaledToFill()
             .background(color)
-            .border(Color("Dark"), width: CGFloat(strokeLineWidth))
+//            .border(Color("Dark"), width: CGFloat(strokeLineWidth))
             .frame(width: cell.size.width, height: cell.size.height)
             .position(x: startX, y: startY)
             .onTapGesture {
