@@ -44,7 +44,7 @@ struct SelectCoordinatesView: View {
                                     }
                                 }
                             }
-                            .frame(width: CGFloat(tempMaze.columns) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows) * CGFloat(cellSize.height))
+                            .frame(width: CGFloat(tempMaze.columns - 1) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows - 1) * CGFloat(cellSize.height))
                             
                         }
                         .frame(width: CGFloat(tempMaze.columns + 2) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows + 2) * CGFloat(cellSize.height))
@@ -75,7 +75,7 @@ struct SelectCoordinatesView: View {
                                     }
                                 }
                             }
-                            .frame(width: CGFloat(tempMaze.columns) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows) * CGFloat(cellSize.height))
+                            .frame(width: CGFloat(tempMaze.columns - 1) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows - 1) * CGFloat(cellSize.height))
                             
                         }
                         .frame(width: CGFloat(tempMaze.columns + 2) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows + 2) * CGFloat(cellSize.height))
