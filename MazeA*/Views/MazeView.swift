@@ -17,17 +17,16 @@ struct MazeView: View {
                 let row = $0
                 ForEach((0..<maze.columns), id: \.self) {
                     let column = $0
-                    MazeCellView(cell: maze.cells[row][column])
-                        .onTapGesture {
-                            if maze.isWall(atRow: row, column: column) {
-                                maze.removeWall(atRow: row, column: column)
-                            } else {
-                                maze.setWall(atRow: row, column: column)
-                            }
+                    MazeCellView(cell: maze.cells[row][column]) {
+                        if maze.isWall(atRow: row, column: column) {
+                            maze.removeWall(atRow: row, column: column)
+                        } else {
+                            maze.setWall(atRow: row, column: column)
                         }
+                    }
                 }
             }
-            .frame(width: CGFloat(maze.columns) * CGFloat(cellSize.width), height: CGFloat(maze.rows) * CGFloat(cellSize.height))
+            .frame(width: CGFloat(maze.columns - 1) * CGFloat(cellSize.width), height: CGFloat(maze.rows - 1) * CGFloat(cellSize.height))
         }
         .frame(width: CGFloat(maze.columns + 2) * CGFloat(cellSize.width), height: CGFloat(maze.rows + 2) * CGFloat(cellSize.height))
     }

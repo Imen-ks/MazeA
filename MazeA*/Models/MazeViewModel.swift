@@ -268,7 +268,7 @@ extension Maze {
 }
 
 extension Maze {
-    @MainActor func customizeMazeWith(rows: Int, columns: Int, startPoint: CGPoint?, goalPoint: CGPoint?) -> Maze {
+    func customizeMazeWith(rows: Int, columns: Int, startPoint: CGPoint?, goalPoint: CGPoint?) -> Maze {
         // temporary maze for customization process
         let maze = Maze(rows: rows, columns: columns, startPoint: CGPoint(x: 0, y: 0), goalPoint: CGPoint(x: 0, y: 0))
         maze.rows = rows

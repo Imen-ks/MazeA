@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 
 let cellSize = CGSize(width: 30, height: 30)
 
@@ -20,12 +19,6 @@ struct MazeCell: Identifiable, Equatable {
     var isGoalPoint: Bool = false
     var isWall: Bool = true
     var isVisited: Bool = false
-    var color: Color {
-        isStartPoint || isGoalPoint ? Color.blue
-        : isVisited ? Color.green
-        : isWall ? Color("LightGray")
-        : Color("Dark")
-    }
     var coordinate: CGPoint?
     var size = cellSize
 }

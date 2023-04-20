@@ -67,7 +67,7 @@ struct CustomizedMazeView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .cornerRadius(16)
-                        .padding(.top, 100)
+                        .padding(.top, 50)
                         .disabled(Int(rows) == nil || Int(columns) == nil || startPoint == nil || goalPoint == nil)
                         .alert(isPresented: $showAlert) {
                             Alert(title: Text("Invalid number of rows or columns"), message: Text("For display convenience, please select a number of rows between 1 & 16 and a number of columns between 1 & 9."), dismissButton: .default(Text("Ok")))

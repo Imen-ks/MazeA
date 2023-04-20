@@ -39,10 +39,9 @@ struct SelectCoordinatesView: View {
                                 let row = $0
                                 ForEach((0..<tempMaze.columns), id: \.self) {
                                     let column = $0
-                                    MazeCellView(cell: tempMaze.cells[row][column])
-                                        .onTapGesture {
-                                            startPoint = CGPoint(x: row, y: column)
-                                        }
+                                    MazeCellView(cell: tempMaze.cells[row][column]) {
+                                        startPoint = CGPoint(x: row, y: column)
+                                    }
                                 }
                             }
                             .frame(width: CGFloat(tempMaze.columns) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows) * CGFloat(cellSize.height))
@@ -71,10 +70,9 @@ struct SelectCoordinatesView: View {
                                 let row = $0
                                 ForEach((0..<tempMaze.columns), id: \.self) {
                                     let column = $0
-                                    MazeCellView(cell: tempMaze.cells[row][column])
-                                        .onTapGesture {
-                                            goalPoint = CGPoint(x: row, y: column)
-                                        }
+                                    MazeCellView(cell: tempMaze.cells[row][column]) {
+                                        goalPoint = CGPoint(x: row, y: column)
+                                    }
                                 }
                             }
                             .frame(width: CGFloat(tempMaze.columns) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows) * CGFloat(cellSize.height))
