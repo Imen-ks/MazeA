@@ -10,7 +10,6 @@ import SwiftUI
 struct MazeCellView: View {
     @EnvironmentObject var maze: Maze
     var cell: MazeCell
-    var strokeLineWidth = 2
     var action: () -> Void
     
     var startX: CGFloat {
@@ -24,10 +23,10 @@ struct MazeCellView: View {
     }
     
     var color: Color {
-        cell.isStartPoint || cell.isGoalPoint ? Color.yellow
+        cell.isStartPoint || cell.isGoalPoint ? Color(uiColor: .systemGray3)
         : cell.isVisited ? Color.green
-        : cell.isWall ? Color("LightGray")
-        : Color("Dark")
+        : cell.isWall ? Color(uiColor: .systemGray3)
+        : Color.black
     }
     
     var image: String {
@@ -43,7 +42,6 @@ struct MazeCellView: View {
             .resizable()
             .scaledToFill()
             .background(color)
-//            .border(Color("Dark"), width: CGFloat(strokeLineWidth))
             .frame(width: cell.size.width, height: cell.size.height)
             .position(x: startX, y: startY)
             .onTapGesture {
@@ -64,7 +62,6 @@ struct MazeCellView_Previews: PreviewProvider {
             MazeCellView(cell: Cell.createSampleData()[1][2], action: {})
             MazeCellView(cell: Cell.createSampleData()[1][3], action: {})
         }
-//        .frame()
         .padding()
         .environmentObject(Maze.createSampleData())
     }

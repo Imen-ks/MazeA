@@ -61,12 +61,14 @@ struct MainScreenView: View {
                             .padding(.bottom, 10)
                             
                             LoadMazeButtonView(orientation: .vertical) {
+                                maze.reset()
                                 maze.loadMaze()
                             }
                         }
                      } else {
                          HStack {
                              LoadMazeButtonView(orientation: .horizontal) {
+                                 maze.reset()
                                  maze.loadMaze()
                              }
                              .padding(.bottom, 8)
@@ -109,6 +111,7 @@ struct MainScreenView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
+                        maze.reset()
                         showDescription = true
                     } label: {
                         Image(systemName: "info.circle")
@@ -122,6 +125,7 @@ struct MainScreenView: View {
                 }
                 ToolbarItem {
                     Button {
+                        maze.reset()
                         isCustomizingMaze = true
                     } label: {
                         Image(systemName: "plus")
