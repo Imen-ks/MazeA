@@ -29,6 +29,7 @@ struct MainScreenView: View {
                     .opacity(0.7)
                     .ignoresSafeArea()
                 Group {
+                    //--------------------PORTRAIT LAYOUT--------------------//
                     if horizontalSizeClass == .compact && verticalSizeClass == .regular {
                         VStack {
                             MazeView()
@@ -66,6 +67,7 @@ struct MainScreenView: View {
                             }
                         }
                      } else {
+                         //-------------------LANDSCAPE LAYOUT------------------//
                          HStack {
                              LoadMazeButtonView(orientation: .horizontal) {
                                  maze.reset()
@@ -111,7 +113,6 @@ struct MainScreenView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
-                        maze.reset()
                         showDescription = true
                     } label: {
                         Image(systemName: "info.circle")

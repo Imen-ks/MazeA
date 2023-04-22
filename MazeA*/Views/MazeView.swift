@@ -20,8 +20,8 @@ struct MazeView: View {
                     MazeCellView(cell: maze.cells[row][column]) {
                         if maze.isWall(atRow: row, column: column) {
                             maze.removeWall(atRow: row, column: column)
-                        } else {
-                            maze.setWall(atRow: row, column: column)
+                        } else if !maze.isStartPoint(atRow: row, column: column) && !maze.isGoalPoint(atRow: row, column: column) {
+                                maze.setWall(atRow: row, column: column)
                         }
                     }
                 }

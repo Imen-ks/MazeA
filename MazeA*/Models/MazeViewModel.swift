@@ -201,12 +201,7 @@ extension Maze {
 
 extension Maze {
     func setWall(atRow row: Int, column: Int) {
-        if row != Int(startPoint.x) && column != Int(startPoint.y) {
-            cells[row][column].isWall = true
-        } else if row != Int(goalPoint.x) && column != Int(goalPoint.y) {
-            cells[row][column].isWall = true
-        }
-        
+        cells[row][column].isWall = true
     }
     
     func isWall(atRow row: Int, column: Int) -> Bool {
@@ -269,7 +264,6 @@ extension Maze {
 
 extension Maze {
     func customizeMazeWith(rows: Int, columns: Int, startPoint: CGPoint?, goalPoint: CGPoint?) -> Maze {
-        // temporary maze for customization process
         let maze = Maze(rows: rows, columns: columns, startPoint: CGPoint(x: 0, y: 0), goalPoint: CGPoint(x: 0, y: 0))
         maze.rows = rows
         maze.columns = columns

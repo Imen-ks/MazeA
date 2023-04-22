@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct CustomizedMazeView: View {
     @EnvironmentObject var maze: Maze
@@ -18,6 +17,15 @@ struct CustomizedMazeView: View {
     @State private var isSelectingStartPoint = false
     @State private var isSelectingGoalPoint = false
     @State private var showAlert = false
+    
+    
+    var invalidNumberOfRowsOrColumns: Bool {
+        Int(rows) ?? 0 > 16 || Int(rows) ?? 0 <= 0 || Int(columns) ?? 0 > 9 || Int(columns) ?? 0 <= 0
+    }
+    
+    var missingInfo: Bool {
+        Int(rows) == nil || Int(columns) == nil || startPoint == nil || goalPoint == nil
+    }
     
     var body: some View {
         NavigationStack {
@@ -52,7 +60,7 @@ struct CustomizedMazeView: View {
                             }
                         } 
                         Button {
-                            if Int(rows) ?? 0 > 16 || Int(rows) ?? 0 <= 0 || Int(columns) ?? 0 > 9 || Int(columns) ?? 0 <= 0 {
+                            if invalidNumberOfRowsOrColumns {
                                 showAlert = true
                                 startPoint = nil
                                 goalPoint = nil
@@ -68,7 +76,7 @@ struct CustomizedMazeView: View {
                         .buttonStyle(.borderedProminent)
                         .cornerRadius(16)
                         .padding(.top, 50)
-                        .disabled(Int(rows) == nil || Int(columns) == nil || startPoint == nil || goalPoint == nil)
+                        .disabled(missingInfo)
                         .alert(isPresented: $showAlert) {
                             Alert(title: Text("Invalid number of rows or columns"), message: Text("For display convenience, please select a number of rows between 1 & 16 and a number of columns between 1 & 9."), dismissButton: .default(Text("Ok")))
                         }

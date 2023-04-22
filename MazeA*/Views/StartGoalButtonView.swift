@@ -29,10 +29,10 @@ struct StartGoalButtonView: View {
             .cornerRadius(16)
             .padding(.horizontal)
             .sheet(isPresented: $isSelectingStartPoint) {
-                SelectCoordinatesView(isCustomizingMaze: $isCustomizingMaze, rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint)
+                SelectCoordinatesView(rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint)
             }
             .sheet(isPresented: $isSelectingGoalPoint) {
-                SelectCoordinatesView(isCustomizingMaze: $isCustomizingMaze, rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint)
+                SelectCoordinatesView(rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint)
             }
     }
 }

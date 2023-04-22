@@ -9,19 +9,23 @@ import SwiftUI
 
 struct SelectCoordinatesView: View {
     @EnvironmentObject var maze: Maze
-    @Binding var isCustomizingMaze: Bool
     @Binding var rows: String
     @Binding var columns: String
     @Binding var startPoint: CGPoint?
     @Binding var goalPoint: CGPoint?
     @Binding var isSelectingStartPoint: Bool
     @Binding var isSelectingGoalPoint: Bool
+    @State private var selection: CGPoint?
     
-    var tempMaze: Maze? {
-        if Int(rows) ?? 0 > 0 && Int(columns) ?? 0 > 0 {
-            return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint, goalPoint: goalPoint)
-        }
-        return nil
+    var invalidNumberOfRowsOrColumns: Bool {
+        Int(rows) ?? 0 > 16 || Int(rows) ?? 0 <= 0 || Int(columns) ?? 0 > 9 || Int(columns) ?? 0 <= 0 || rows.isEmpty || columns.isEmpty
+    }
+    
+    var invalidSelectionMessage: String {
+        """
+        The number of rows and columns cannot be empty.
+        For display convenience, please select a number of rows between 1 & 16 and a number of columns between 1 & 9.
+        """
     }
     
     var body: some View {
@@ -30,24 +34,44 @@ struct SelectCoordinatesView: View {
                 Color.teal
                     .opacity(0.7)
                     .ignoresSafeArea(.container, edges: .bottom)
-                if isSelectingStartPoint {
-                    if let tempMaze = tempMaze {
-                        ZStack(alignment: .center) {
-                            Rectangle()
-                                .foregroundColor(.black)
-                            ForEach((0..<tempMaze.rows), id: \.self) {
-                                let row = $0
-                                ForEach((0..<tempMaze.columns), id: \.self) {
-                                    let column = $0
-                                    MazeCellView(cell: tempMaze.cells[row][column]) {
-                                        startPoint = CGPoint(x: row, y: column)
-                                    }
-                                }
+                if invalidNumberOfRowsOrColumns {
+                    VStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .padding(.top)
+                            .font(.largeTitle)
+                        Text(invalidSelectionMessage)
+                            .font(.title)
+                            .padding()
+                    }
+                    .foregroundColor(.teal)
+                    .background()
+                    .background()
+                    .cornerRadius(16)
+                    .padding()
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                startPoint = nil
+                                goalPoint = nil
+                                isSelectingStartPoint = false
+                                isSelectingGoalPoint = false
+                            } label: {
+                                Image(systemName: "xmark")
+                                    .bold()
+                                    .padding(.top, 10)
                             }
-                            .frame(width: CGFloat(tempMaze.columns - 1) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows - 1) * CGFloat(cellSize.height))
-                            
+                            .foregroundColor(.accentColor)
                         }
-                        .frame(width: CGFloat(tempMaze.columns + 2) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows + 2) * CGFloat(cellSize.height))
+                    }
+                } else {
+                    if isSelectingStartPoint {
+                        VStack {
+                            TemporaryMazeView(rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, selection: $selection) {
+                                startPoint = selection
+                            }
+                        }
+                        .navigationTitle("Start position")
+                        .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
@@ -60,25 +84,14 @@ struct SelectCoordinatesView: View {
                                 .foregroundColor(.accentColor)
                             }
                         }
-                    }
-                } else if isSelectingGoalPoint {
-                    if let tempMaze = tempMaze {
-                        ZStack(alignment: .center) {
-                            Rectangle()
-                                .foregroundColor(.black)
-                            ForEach((0..<tempMaze.rows), id: \.self) {
-                                let row = $0
-                                ForEach((0..<tempMaze.columns), id: \.self) {
-                                    let column = $0
-                                    MazeCellView(cell: tempMaze.cells[row][column]) {
-                                        goalPoint = CGPoint(x: row, y: column)
-                                    }
-                                }
+                    } else if isSelectingGoalPoint {
+                        VStack {
+                            TemporaryMazeView(rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, selection: $selection) {
+                                goalPoint = selection
                             }
-                            .frame(width: CGFloat(tempMaze.columns - 1) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows - 1) * CGFloat(cellSize.height))
-                            
                         }
-                        .frame(width: CGFloat(tempMaze.columns + 2) * CGFloat(cellSize.width), height: CGFloat(tempMaze.rows + 2) * CGFloat(cellSize.height))
+                        .navigationTitle("Goal position")
+                        .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
@@ -100,7 +113,6 @@ struct SelectCoordinatesView: View {
 
 struct SelectCoordinatesView_Previews: PreviewProvider {
     struct PreviewWrapper: View {
-        @State private var isCustomizingMaze = false
         @State private var rows = "8"
         @State private var columns = "8"
         @State private var startPoint = Optional(CGPoint(x: 0, y: 0))
@@ -109,7 +121,7 @@ struct SelectCoordinatesView_Previews: PreviewProvider {
         @State private var isSelectingGoalPoint = true
         
         var body: some View {
-            SelectCoordinatesView(isCustomizingMaze: $isCustomizingMaze, rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint)
+            SelectCoordinatesView(rows: $rows, columns: $columns, startPoint: $startPoint, goalPoint: $goalPoint, isSelectingStartPoint: $isSelectingStartPoint, isSelectingGoalPoint: $isSelectingGoalPoint)
         }
     }
     
