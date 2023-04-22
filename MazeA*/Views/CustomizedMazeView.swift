@@ -34,7 +34,15 @@ struct CustomizedMazeView: View {
                 ScrollView {
                     Section(header: Text("CUSTOMIZE YOUR OWN MAZE").font(.title2).bold()) {
                         InputNumberView(property: $rows, headline: "Number of rows", subHeadline: "(between 1 & 16)")
+                            .onChange(of: rows) { _ in
+                                startPoint = nil
+                                goalPoint = nil
+                            }
                         InputNumberView(property: $columns, headline: "Number of columns", subHeadline: "(between 1 & 9)")
+                            .onChange(of: columns) { _ in
+                                startPoint = nil
+                                goalPoint = nil
+                            }
                             . padding(.bottom)
                         
                         HStack {

@@ -16,50 +16,9 @@ struct TemporaryMazeView: View {
     @Binding var selection: CGPoint?
     
     var action: () -> Void
-    
-    var startXCoordinate: Int {
-        if let startPoint = startPoint {
-            if Int(startPoint.x) >= (Int(rows) ?? 0) {
-                return (Int(rows) ?? 0)  - 1
-            } else { return Int(startPoint.x) }
-        } else { return -1 }
-    }
-    
-    var startYCoordinate: Int {
-        if let startPoint = startPoint {
-            if Int(startPoint.y) >= (Int(columns) ?? 0) {
-                return (Int(columns) ?? 0)  - 1
-            } else { return Int(startPoint.y) }
-        } else { return -1 }
-    }
-    
-    var goalXCoordinate: Int {
-        if let goalPoint = goalPoint {
-            if Int(goalPoint.x) >= (Int(rows) ?? 0) {
-                return (Int(rows) ?? 0) - 1
-            } else { return Int(goalPoint.x) }
-        } else { return -1 }
-    }
-    
-    var goalYCoordinate: Int {
-        if let goalPoint = goalPoint {
-            if Int(goalPoint.y) >= (Int(columns) ?? 0) {
-                return (Int(columns) ?? 0) - 1
-            } else { return Int(goalPoint.y) }
-        } else { return -1 }
-    }
-    
+       
     var tempMaze: Maze {
-        if let _ = startPoint, let _ = goalPoint {
-            return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: CGPoint(x: startXCoordinate, y: startYCoordinate), goalPoint: CGPoint(x: goalXCoordinate, y: goalYCoordinate))
-        }
-        if let _ = startPoint {
-            return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: CGPoint(x: startXCoordinate, y: startYCoordinate), goalPoint: goalPoint)
-        } else if let _ = goalPoint {
-            return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint, goalPoint: CGPoint(x: goalXCoordinate, y: goalYCoordinate))
-        } else {
-            return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint, goalPoint: goalPoint)
-        }
+        return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint, goalPoint: goalPoint)
     }
     
     var body: some View {
