@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct MazeDescriptionView: View {
-    @EnvironmentObject var maze: Maze
+    @EnvironmentObject var viewModel: Maze
     @Binding var showDescription: Bool
     
     var numberOfBoxes: Int {
-        maze.cells.flatMap { $0 }.count
+        viewModel.cells.flatMap { $0 }.count
     }
     
     var numberOfWalls: Int {
-        maze.cells.flatMap { $0 }
-            .filter { maze.isWall(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }.count
+        viewModel.cells.flatMap { $0 }
+            .filter { viewModel.isWall(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }.count
     }
     
     var startPoint: MazeCell {
-        maze.cells.flatMap { $0 }
-            .filter { maze.isStartPoint(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }
+        viewModel.cells.flatMap { $0 }
+            .filter { viewModel.isStartPoint(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }
             .map { $0 }[0]
     }
     
     var goalPoint: MazeCell {
-        maze.cells.flatMap { $0 }
-            .filter { maze.isGoalPoint(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }
+        viewModel.cells.flatMap { $0 }
+            .filter { viewModel.isGoalPoint(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }
             .map { $0 }[0]
     }
     
     var solutionPath: String {
-        maze.displaySolution()
+        viewModel.displaySolution()
     }
     
     var infos: [String: String] {

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MazeCellView: View {
-    @EnvironmentObject var maze: Maze
     var cell: MazeCell
     var action: () -> Void
     
@@ -63,6 +62,5 @@ struct MazeCellView_Previews: PreviewProvider {
             MazeCellView(cell: Cell.createSampleData()[1][3], action: {})
         }
         .padding()
-        .environmentObject(Maze.createSampleData())
     }
 }

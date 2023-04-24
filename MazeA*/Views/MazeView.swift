@@ -8,27 +8,30 @@
 import SwiftUI
 
 struct MazeView: View {
-    @EnvironmentObject var maze: Maze
+    @EnvironmentObject var viewModel: Maze
+    
     var body: some View {
         ZStack(alignment: .center) {
             Rectangle()
                 .foregroundColor(.black)
-            ForEach((0..<maze.rows), id: \.self) {
+            ForEach((0..<viewModel.rows), id: \.self) {
                 let row = $0
-                ForEach((0..<maze.columns), id: \.self) {
+                ForEach((0..<viewModel.columns), id: \.self) {
                     let column = $0
-                    MazeCellView(cell: maze.cells[row][column]) {
-                        if maze.isWall(atRow: row, column: column) {
-                            maze.removeWall(atRow: row, column: column)
-                        } else if !maze.isStartPoint(atRow: row, column: column) && !maze.isGoalPoint(atRow: row, column: column) {
-                                maze.setWall(atRow: row, column: column)
+                    MazeCellView(cell: viewModel.cells[row][column]) {
+                        if !viewModel.isSolved && !viewModel.isSolving {
+                            if viewModel.isWall(atRow: row, column: column) {
+                                viewModel.removeWall(atRow: row, column: column)
+                            } else if !viewModel.isStartPoint(atRow: row, column: column) && !viewModel.isGoalPoint(atRow: row, column: column) {
+                                    viewModel.setWall(atRow: row, column: column)
+                            }
                         }
                     }
                 }
             }
-            .frame(width: CGFloat(maze.columns - 1) * CGFloat(cellSize.width), height: CGFloat(maze.rows - 1) * CGFloat(cellSize.height))
+            .frame(width: CGFloat(viewModel.columns - 1) * CGFloat(cellSize.width), height: CGFloat(viewModel.rows - 1) * CGFloat(cellSize.height))
         }
-        .frame(width: CGFloat(maze.columns + 2) * CGFloat(cellSize.width), height: CGFloat(maze.rows + 2) * CGFloat(cellSize.height))
+        .frame(width: CGFloat(viewModel.columns + 2) * CGFloat(cellSize.width), height: CGFloat(viewModel.rows + 2) * CGFloat(cellSize.height))
     }
 }
 

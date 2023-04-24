@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TemporaryMazeView: View {
-    @EnvironmentObject var maze: Maze
+    @EnvironmentObject var viewModel: Maze
     @Binding var rows: String
     @Binding var columns: String
     @Binding var startPoint: CGPoint?
@@ -18,7 +18,7 @@ struct TemporaryMazeView: View {
     var action: () -> Void
        
     var tempMaze: Maze {
-        return maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint, goalPoint: goalPoint)
+        return viewModel.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint, goalPoint: goalPoint)
     }
     
     var body: some View {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomizedMazeView: View {
-    @EnvironmentObject var maze: Maze
+    @EnvironmentObject var viewModel: Maze
     @Binding var isCustomizingMaze: Bool
     @State private var rows = ""
     @State private var columns = ""
@@ -73,7 +73,7 @@ struct CustomizedMazeView: View {
                                 startPoint = nil
                                 goalPoint = nil
                             } else {
-                                maze.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint ?? CGPoint(), goalPoint: goalPoint ?? CGPoint())
+                                viewModel.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint ?? CGPoint(), goalPoint: goalPoint ?? CGPoint())
                                 isCustomizingMaze = false
                             }
                         } label: {
@@ -110,7 +110,6 @@ struct CustomizedMazeView: View {
 }
 
 struct CustomizedMazeView_Previews: PreviewProvider {
-    @State static var maze = Maze.createSampleData()
     static var previews: some View {
         CustomizedMazeView(isCustomizingMaze: .constant(true))
             .environmentObject(Maze.createSampleData())

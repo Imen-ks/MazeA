@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectCoordinatesView: View {
-    @EnvironmentObject var maze: Maze
+    @EnvironmentObject var viewModel: Maze
     @Binding var rows: String
     @Binding var columns: String
     @Binding var startPoint: CGPoint?

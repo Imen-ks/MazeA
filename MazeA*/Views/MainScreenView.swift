@@ -10,17 +10,10 @@ import SwiftUI
 struct MainScreenView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-    @EnvironmentObject var maze: Maze
+    @EnvironmentObject var viewModel: Maze
     @State private var isNotSolvable = false
     @State private var showDescription = false
     @State private var isCustomizingMaze = false
-    
-    var isSolving: Bool {
-        maze.isSolving
-    }
-    var isSolved: Bool {
-        maze.isSolved
-    }
     
     var body: some View {
         NavigationStack {
@@ -37,8 +30,8 @@ struct MainScreenView: View {
                             HStack {
                                 SolveButtonView(orientation: .vertical) {
                                     Task {
-                                        await maze.getSolution()
-                                        if let _ = maze.solution {
+                                        await viewModel.getSolution()
+                                        if let _ = viewModel.solution {
                                             isNotSolvable = false
                                         } else {
                                             isNotSolvable = true
@@ -46,32 +39,32 @@ struct MainScreenView: View {
                                     }
                                 }
                                 .padding(.horizontal)
-                                .disabled(isSolved)
+                                .disabled(viewModel.isSolved)
                                 .sheet(isPresented: $isNotSolvable) {
                                     NoSolutionModalView()
                                         .presentationDetents([.medium])
                                 }
                                 
                                 ResetButtonView(orientation: .vertical) {
-                                    maze.reset()
+                                    viewModel.reset()
                                 }
                                 .padding(.horizontal)
-                                .disabled(isSolving)
+                                .disabled(viewModel.isSolving)
                             }
                             .padding(.top, 10)
                             .padding(.bottom, 10)
                             
                             LoadMazeButtonView(orientation: .vertical) {
-                                maze.reset()
-                                maze.loadMaze()
+                                viewModel.reset()
+                                viewModel.loadMaze()
                             }
                         }
                      } else {
                          //-------------------LANDSCAPE LAYOUT------------------//
                          HStack {
                              LoadMazeButtonView(orientation: .horizontal) {
-                                 maze.reset()
-                                 maze.loadMaze()
+                                 viewModel.reset()
+                                 viewModel.loadMaze()
                              }
                              .padding(.bottom, 8)
                              
@@ -82,8 +75,8 @@ struct MainScreenView: View {
                              VStack {
                                  SolveButtonView(orientation: .horizontal) {
                                      Task {
-                                         await maze.getSolution()
-                                         if let _ = maze.solution {
+                                         await viewModel.getSolution()
+                                         if let _ = viewModel.solution {
                                              isNotSolvable = false
                                          } else {
                                              isNotSolvable = true
@@ -91,17 +84,17 @@ struct MainScreenView: View {
                                      }
                                  }
                                  .padding(.vertical)
-                                 .disabled(isSolved)
+                                 .disabled(viewModel.isSolved)
                                  .sheet(isPresented: $isNotSolvable) {
                                      NoSolutionModalView()
                                          .presentationDetents([.medium])
                                  }
                                  
                                  ResetButtonView(orientation: .horizontal) {
-                                     maze.reset()
+                                     viewModel.reset()
                                  }
                                  .padding(.vertical)
-                                 .disabled(isSolving)
+                                 .disabled(viewModel.isSolving)
                              }
                              .padding(.leading, 120) // for adjusting the misbehavior of HStack on rotation - to be checked
                              .padding(.trailing, 50)
@@ -126,7 +119,7 @@ struct MainScreenView: View {
                 }
                 ToolbarItem {
                     Button {
-                        maze.reset()
+                        viewModel.reset()
                         isCustomizingMaze = true
                     } label: {
                         Image(systemName: "plus")
