@@ -66,7 +66,6 @@ struct FileStorage {
     
     static func remove(_ fileName: String) {
         let url = FileManager.documentDirectoryUrl.appending(path: fileName, directoryHint: .notDirectory)
-        print(url)
         if FileManager.default.fileExists(atPath: url.path) {
             do {
                 try FileManager.default.removeItem(at: url)

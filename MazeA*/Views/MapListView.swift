@@ -73,15 +73,14 @@ struct MapListView: View {
             .onAppear {
                 mapService.load()
             }
-            .onChange(of: mapService.maps, perform: { _ in
-                mapService.load()
-            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     HStack {
                         EditButton()
                         Button {
-                            showAlert = true
+                            if !mapService.maps.isEmpty {
+                                showAlert = true
+                            }
                         } label: {
                             Text("Clear")
                         }
@@ -108,7 +107,7 @@ struct MapListView: View {
     }
     func delete(at offsets: IndexSet){
         if let ndx = offsets.first {
-            let item = mapService.maps.sorted(by: >)[ndx]
+            let item = mapService.maps.sorted(by: <)[ndx]
             FileStorage.remove(item.key)
         }
     }
@@ -124,7 +123,7 @@ struct MapListView_Previews: PreviewProvider {
 struct MapRow: View {
     var map: Map
     var walls: String {
-        "\(map.cells.flatMap { $0 }.map { $0.isWall }.count)"
+        "\(map.cells.flatMap { $0 }.filter { $0.isWall }.count)"
     }
     var start: String {
         "(\(Int(map.startPoint.x) + 1), \(Int(map.startPoint.y) + 1))"
@@ -142,8 +141,8 @@ struct MapRow: View {
                 .padding(.bottom, 1)
             Text("\(map.rows) rows / \(map.columns) columns")
             Text("\(walls) walls")
-            Text("Start coordinates:  \(start)")
-            Text("Goal coordinates:  \(goal)")
+            Text("Start coordinates: \(start)")
+            Text("Goal coordinates: \(goal)")
         }
     }
 }
