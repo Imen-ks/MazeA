@@ -11,9 +11,12 @@ struct MainScreenView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @EnvironmentObject var viewModel: Maze
+    @StateObject var mapService = MapService()
     @State private var isNotSolvable = false
     @State private var showDescription = false
     @State private var isCustomizingMaze = false
+    @State private var isLoadingMaze = false
+    @State private var showAlert = false
     
     var body: some View {
         NavigationStack {
@@ -25,10 +28,36 @@ struct MainScreenView: View {
                     //--------------------PORTRAIT LAYOUT--------------------//
                     if horizontalSizeClass == .compact && verticalSizeClass == .regular {
                         VStack {
-                            MazeView()
-                            
                             HStack {
-                                SolveButtonView(orientation: .vertical) {
+                                ButtonView(text: "Load", image: "folder.badge.gearshape", orientation: .vertical) {
+                                    viewModel.reset()
+                                    isLoadingMaze = true
+                                }
+                                .tint(.indigo)
+                                .disabled(viewModel.isSolving)
+                                .sheet(isPresented: $isLoadingMaze) {
+                                    MapListView(isLoadingMaze: $isLoadingMaze)
+                                }
+                                
+                                ButtonView(text: "Save", image: "externaldrive.badge.checkmark", orientation: .vertical) {
+                                    showAlert = true
+                                    viewModel.reset()
+                                    mapService.save(map: viewModel.map)
+                                    UserDefaults.standard.setValue("map_\(viewModel.map.id)", forKey: "fileSystem")
+                                }
+                                .tint(.indigo)
+                                .disabled(viewModel.isSolving)
+                                .alert(isPresented: $showAlert) {
+                                    Alert(title: Text("This maze has been saved in your App !"), message: Text("Click the \"Load\" button to browse the list of all saved mazes."), dismissButton: .default(Text("Ok")))
+                                }
+                                
+                            }
+                            .padding()
+                            Spacer()
+                            MazeView()
+                            Spacer()
+                            HStack {
+                                ButtonView(text: "Solve", image: "gear", orientation: .vertical) {
                                     Task {
                                         await viewModel.getSolution()
                                         if let _ = viewModel.solution {
@@ -38,42 +67,51 @@ struct MainScreenView: View {
                                         }
                                     }
                                 }
-                                .padding(.horizontal)
-                                .disabled(viewModel.isSolved)
+                                .disabled(viewModel.isSolved || viewModel.isSolving)
                                 .sheet(isPresented: $isNotSolvable) {
                                     NoSolutionModalView()
                                         .presentationDetents([.medium])
                                 }
                                 
-                                ResetButtonView(orientation: .vertical) {
+                                ButtonView(text: "Reset", image: "arrow.counterclockwise", orientation: .vertical) {
                                     viewModel.reset()
                                 }
-                                .padding(.horizontal)
                                 .disabled(viewModel.isSolving)
                             }
                             .padding(.top, 10)
-                            .padding(.bottom, 10)
-                            
-                            LoadMazeButtonView(orientation: .vertical) {
-                                viewModel.reset()
-                                viewModel.loadMaze()
-                            }
                         }
                      } else {
                          //-------------------LANDSCAPE LAYOUT------------------//
                          HStack {
-                             LoadMazeButtonView(orientation: .horizontal) {
-                                 viewModel.reset()
-                                 viewModel.loadMaze()
+                             VStack {
+                                 ButtonView(text: "Load", image: "folder.badge.gearshape", orientation: .horizontal) {
+                                     viewModel.reset()
+                                     isLoadingMaze = true
+                                 }
+                                 .tint(.indigo)
+                                 .disabled(viewModel.isSolving)
+                                 .sheet(isPresented: $isLoadingMaze) {
+                                     MapListView(isLoadingMaze: $isLoadingMaze)
+                                 }
+                                 
+                                 ButtonView(text: "Save", image: "externaldrive.badge.checkmark", orientation: .horizontal) {
+                                     showAlert = true
+                                     viewModel.reset()
+                                     mapService.save(map: viewModel.map)
+                                     UserDefaults.standard.setValue("map_\(viewModel.map.id)", forKey: "fileSystem")
+                                 }
+                                 .tint(.indigo)
+                                 .disabled(viewModel.isSolving)
+                                 .alert(isPresented: $showAlert) {
+                                     Alert(title: Text("This maze has been saved in your App !"), message: Text("Click the \"Load\" button to browse the list of all saved mazes."), dismissButton: .default(Text("Ok")))
+                                 }
                              }
-                             .padding(.bottom, 8)
                              
                              MazeView()
-                                 .rotationEffect(.degrees(-90))
-                                 .padding(.leading, 120) // for adjusting the misbehavior of HStack on rotation - to be checked
+                                 .padding(.leading, 120)
                              
                              VStack {
-                                 SolveButtonView(orientation: .horizontal) {
+                                 ButtonView(text: "Solve", image: "gear", orientation: .horizontal) {
                                      Task {
                                          await viewModel.getSolution()
                                          if let _ = viewModel.solution {
@@ -83,21 +121,18 @@ struct MainScreenView: View {
                                          }
                                      }
                                  }
-                                 .padding(.vertical)
-                                 .disabled(viewModel.isSolved)
+                                 .disabled(viewModel.isSolved || viewModel.isSolving)
                                  .sheet(isPresented: $isNotSolvable) {
                                      NoSolutionModalView()
                                          .presentationDetents([.medium])
                                  }
                                  
-                                 ResetButtonView(orientation: .horizontal) {
+                                 ButtonView(text: "Reset", image: "arrow.counterclockwise", orientation: .horizontal) {
                                      viewModel.reset()
                                  }
-                                 .padding(.vertical)
                                  .disabled(viewModel.isSolving)
                              }
-                             .padding(.leading, 120) // for adjusting the misbehavior of HStack on rotation - to be checked
-                             .padding(.trailing, 50)
+                             .padding(.leading, 120)
                          }
                      }
                 }
@@ -144,7 +179,7 @@ struct MainScreenView_Previews: PreviewProvider {
         
         var body: some View {
             MainScreenView()
-                .environmentObject(Maze.createSampleData())
+                .environmentObject(Maze(map: Map.sampleData))
         }
     }
     

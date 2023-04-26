@@ -127,6 +127,6 @@ struct SelectCoordinatesView_Previews: PreviewProvider {
     
     static var previews: some View {
         PreviewWrapper()
-            .environmentObject(Maze.createSampleData())
+            .environmentObject(Maze(map: Map.sampleData))
     }
 }

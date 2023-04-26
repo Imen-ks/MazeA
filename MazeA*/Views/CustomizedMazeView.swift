@@ -73,7 +73,7 @@ struct CustomizedMazeView: View {
                                 startPoint = nil
                                 goalPoint = nil
                             } else {
-                                viewModel.customizeMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint ?? CGPoint(), goalPoint: goalPoint ?? CGPoint())
+                                viewModel.createMazeWith(rows: Int(rows) ?? 0, columns: Int(columns) ?? 0, startPoint: startPoint ?? CGPoint(), goalPoint: goalPoint ?? CGPoint())
                                 isCustomizingMaze = false
                             }
                         } label: {
@@ -112,6 +112,6 @@ struct CustomizedMazeView: View {
 struct CustomizedMazeView_Previews: PreviewProvider {
     static var previews: some View {
         CustomizedMazeView(isCustomizingMaze: .constant(true))
-            .environmentObject(Maze.createSampleData())
+            .environmentObject(Maze(map: Map.sampleData))
     }
 }

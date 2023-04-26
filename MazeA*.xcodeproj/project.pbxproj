@@ -17,20 +17,23 @@
 		A83B943129E9E5720065253B /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B943029E9E5720065253B /* MainScreenView.swift */; };
 		A83B943329EAA0FB0065253B /* MazeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B943229EAA0FB0065253B /* MazeCellView.swift */; };
 		A83B943729EAAE000065253B /* MazeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B943629EAAE000065253B /* MazeViewModel.swift */; };
-		A83B944129EC29890065253B /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944029EC29890065253B /* SampleData.swift */; };
+		A83B944129EC29890065253B /* CellSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944029EC29890065253B /* CellSampleData.swift */; };
 		A83B944629ECE7F20065253B /* AStarAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944529ECE7F20065253B /* AStarAlgorithm.swift */; };
 		A83B944D29ED61F80065253B /* MazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944C29ED61F80065253B /* MazeView.swift */; };
-		A83B944F29ED62A80065253B /* SolveButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B944E29ED62A80065253B /* SolveButtonView.swift */; };
 		A83B945329ED9C1A0065253B /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945229ED9C1A0065253B /* Step.swift */; };
-		A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945429EDEC6B0065253B /* ResetButtonView.swift */; };
-		A83B945729EE03F70065253B /* LoadMazeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B945629EE03F70065253B /* LoadMazeButtonView.swift */; };
+		A84524B529F890E100EFEAEC /* MapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84524B429F890E100EFEAEC /* MapListView.swift */; };
+		A84524B929F9216800EFEAEC /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84524B829F9216800EFEAEC /* ButtonView.swift */; };
+		A84524BB29F92BF600EFEAEC /* StartGoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84524BA29F92BF600EFEAEC /* StartGoalButtonView.swift */; };
 		A87F1F1829F3BCF1001B434A /* TemporaryMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87F1F1729F3BCF1001B434A /* TemporaryMazeView.swift */; };
 		A8851ABD29EF4F0700D9313C /* NoSolutionModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */; };
 		A8851ABF29EF6E5C00D9313C /* MazeDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */; };
 		A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC029EF771300D9313C /* CustomizedMazeView.swift */; };
 		A8851AC429EFFEC000D9313C /* InputNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC329EFFEC000D9313C /* InputNumberView.swift */; };
 		A8851AC629F003C500D9313C /* SelectCoordinatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */; };
-		A8851AC829F045EB00D9313C /* StartGoalButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC729F045EB00D9313C /* StartGoalButtonView.swift */; };
+		A8F00F2229F76BFC008E1B33 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F00F2129F76BFC008E1B33 /* Map.swift */; };
+		A8F00F2429F7B936008E1B33 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F00F2329F7B936008E1B33 /* FileStorage.swift */; };
+		A8F00F2629F7D088008E1B33 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F00F2529F7D088008E1B33 /* MapService.swift */; };
+		A8F00F2829F854DC008E1B33 /* MapSampleData.json in Resources */ = {isa = PBXBuildFile; fileRef = A8F00F2729F854DC008E1B33 /* MapSampleData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,20 +67,23 @@
 		A83B943029E9E5720065253B /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		A83B943229EAA0FB0065253B /* MazeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeCellView.swift; sourceTree = "<group>"; };
 		A83B943629EAAE000065253B /* MazeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewModel.swift; sourceTree = "<group>"; };
-		A83B944029EC29890065253B /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		A83B944029EC29890065253B /* CellSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSampleData.swift; sourceTree = "<group>"; };
 		A83B944529ECE7F20065253B /* AStarAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarAlgorithm.swift; sourceTree = "<group>"; };
 		A83B944C29ED61F80065253B /* MazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeView.swift; sourceTree = "<group>"; };
-		A83B944E29ED62A80065253B /* SolveButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolveButtonView.swift; sourceTree = "<group>"; };
 		A83B945229ED9C1A0065253B /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
-		A83B945429EDEC6B0065253B /* ResetButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetButtonView.swift; sourceTree = "<group>"; };
-		A83B945629EE03F70065253B /* LoadMazeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMazeButtonView.swift; sourceTree = "<group>"; };
+		A84524B429F890E100EFEAEC /* MapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListView.swift; sourceTree = "<group>"; };
+		A84524B829F9216800EFEAEC /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		A84524BA29F92BF600EFEAEC /* StartGoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGoalButtonView.swift; sourceTree = "<group>"; };
 		A87F1F1729F3BCF1001B434A /* TemporaryMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryMazeView.swift; sourceTree = "<group>"; };
 		A8851ABC29EF4F0700D9313C /* NoSolutionModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoSolutionModalView.swift; sourceTree = "<group>"; };
 		A8851ABE29EF6E5C00D9313C /* MazeDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeDescriptionView.swift; sourceTree = "<group>"; };
 		A8851AC029EF771300D9313C /* CustomizedMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedMazeView.swift; sourceTree = "<group>"; };
 		A8851AC329EFFEC000D9313C /* InputNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNumberView.swift; sourceTree = "<group>"; };
 		A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCoordinatesView.swift; sourceTree = "<group>"; };
-		A8851AC729F045EB00D9313C /* StartGoalButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGoalButtonView.swift; sourceTree = "<group>"; };
+		A8F00F2129F76BFC008E1B33 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		A8F00F2329F7B936008E1B33 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		A8F00F2529F7D088008E1B33 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
+		A8F00F2729F854DC008E1B33 /* MapSampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapSampleData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,10 +172,14 @@
 			isa = PBXGroup;
 			children = (
 				A83B943629EAAE000065253B /* MazeViewModel.swift */,
+				A8F00F2129F76BFC008E1B33 /* Map.swift */,
 				A83B942E29E9E3370065253B /* MazeCell.swift */,
 				A83B945229ED9C1A0065253B /* Step.swift */,
 				A83B944529ECE7F20065253B /* AStarAlgorithm.swift */,
-				A83B944029EC29890065253B /* SampleData.swift */,
+				A8F00F2329F7B936008E1B33 /* FileStorage.swift */,
+				A8F00F2529F7D088008E1B33 /* MapService.swift */,
+				A83B944029EC29890065253B /* CellSampleData.swift */,
+				A8F00F2729F854DC008E1B33 /* MapSampleData.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -183,13 +193,12 @@
 				A8851AC029EF771300D9313C /* CustomizedMazeView.swift */,
 				A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */,
 				A83B944C29ED61F80065253B /* MazeView.swift */,
+				A84524B429F890E100EFEAEC /* MapListView.swift */,
 				A87F1F1729F3BCF1001B434A /* TemporaryMazeView.swift */,
 				A83B943229EAA0FB0065253B /* MazeCellView.swift */,
-				A83B944E29ED62A80065253B /* SolveButtonView.swift */,
-				A83B945429EDEC6B0065253B /* ResetButtonView.swift */,
-				A83B945629EE03F70065253B /* LoadMazeButtonView.swift */,
+				A84524B829F9216800EFEAEC /* ButtonView.swift */,
 				A8851AC329EFFEC000D9313C /* InputNumberView.swift */,
-				A8851AC729F045EB00D9313C /* StartGoalButtonView.swift */,
+				A84524BA29F92BF600EFEAEC /* StartGoalButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F00F2829F854DC008E1B33 /* MapSampleData.json in Resources */,
 				A83B940C29E9DFCB0065253B /* Preview Assets.xcassets in Resources */,
 				A83B940929E9DFCB0065253B /* Assets.xcassets in Resources */,
 			);
@@ -324,25 +334,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A83B945529EDEC6B0065253B /* ResetButtonView.swift in Sources */,
 				A83B943129E9E5720065253B /* MainScreenView.swift in Sources */,
-				A8851AC829F045EB00D9313C /* StartGoalButtonView.swift in Sources */,
+				A84524B929F9216800EFEAEC /* ButtonView.swift in Sources */,
 				A83B944D29ED61F80065253B /* MazeView.swift in Sources */,
 				A87F1F1829F3BCF1001B434A /* TemporaryMazeView.swift in Sources */,
 				A8851AC629F003C500D9313C /* SelectCoordinatesView.swift in Sources */,
+				A84524BB29F92BF600EFEAEC /* StartGoalButtonView.swift in Sources */,
 				A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */,
 				A8851AC429EFFEC000D9313C /* InputNumberView.swift in Sources */,
 				A83B944629ECE7F20065253B /* AStarAlgorithm.swift in Sources */,
+				A84524B529F890E100EFEAEC /* MapListView.swift in Sources */,
 				A8851ABD29EF4F0700D9313C /* NoSolutionModalView.swift in Sources */,
+				A8F00F2229F76BFC008E1B33 /* Map.swift in Sources */,
 				A83B943329EAA0FB0065253B /* MazeCellView.swift in Sources */,
 				A83B945329ED9C1A0065253B /* Step.swift in Sources */,
 				A83B942F29E9E3370065253B /* MazeCell.swift in Sources */,
 				A8851ABF29EF6E5C00D9313C /* MazeDescriptionView.swift in Sources */,
-				A83B944129EC29890065253B /* SampleData.swift in Sources */,
+				A83B944129EC29890065253B /* CellSampleData.swift in Sources */,
+				A8F00F2629F7D088008E1B33 /* MapService.swift in Sources */,
+				A8F00F2429F7B936008E1B33 /* FileStorage.swift in Sources */,
 				A83B940529E9DFCA0065253B /* MazeA_App.swift in Sources */,
-				A83B944F29ED62A80065253B /* SolveButtonView.swift in Sources */,
 				A83B943729EAAE000065253B /* MazeViewModel.swift in Sources */,
-				A83B945729EE03F70065253B /* LoadMazeButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

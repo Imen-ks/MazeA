@@ -75,7 +75,7 @@ struct StartGoalButtonView_Previews: PreviewProvider {
             PreviewWrapper1()
             PreviewWrapper2()
         }
-        .environmentObject(Maze.createSampleData())
+        .environmentObject(Maze(map: Map.sampleData))
         .foregroundColor(.white)
     }
 }

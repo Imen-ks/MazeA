@@ -29,7 +29,7 @@ class Step {
 }
 
 extension Step: Hashable {
-    static func ==(lhs: Step, rhs: Step) -> Bool {
+    static func == (lhs: Step, rhs: Step) -> Bool {
       return lhs.coordinate == rhs.coordinate
     }
     

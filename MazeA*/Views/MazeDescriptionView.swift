@@ -12,22 +12,22 @@ struct MazeDescriptionView: View {
     @Binding var showDescription: Bool
     
     var numberOfBoxes: Int {
-        viewModel.cells.flatMap { $0 }.count
+        viewModel.map.cells.flatMap { $0 }.count
     }
     
     var numberOfWalls: Int {
-        viewModel.cells.flatMap { $0 }
+        viewModel.map.cells.flatMap { $0 }
             .filter { viewModel.isWall(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }.count
     }
     
     var startPoint: MazeCell {
-        viewModel.cells.flatMap { $0 }
+        viewModel.map.cells.flatMap { $0 }
             .filter { viewModel.isStartPoint(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }
             .map { $0 }[0]
     }
     
     var goalPoint: MazeCell {
-        viewModel.cells.flatMap { $0 }
+        viewModel.map.cells.flatMap { $0 }
             .filter { viewModel.isGoalPoint(atRow: Int($0.coordinate!.x), column: Int($0.coordinate!.y)) }
             .map { $0 }[0]
     }
@@ -107,6 +107,6 @@ struct MazeDescriptionView: View {
 struct MazeDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
         MazeDescriptionView(showDescription: .constant(true))
-            .environmentObject(Maze.createSampleData())
+            .environmentObject(Maze(map: Map.sampleData))
     }
 }

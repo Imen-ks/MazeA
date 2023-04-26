@@ -9,12 +9,12 @@ import Foundation
 
 let cellSize = CGSize(width: 30, height: 30)
 
-struct MazeCell: Identifiable, Equatable {
+struct MazeCell: Identifiable, Equatable, Codable {
     static func == (lhs: MazeCell, rhs: MazeCell) -> Bool {
         lhs.id == rhs.id
     }
     
-    let id = UUID()
+    var id = UUID()
     var isStartPoint: Bool = false
     var isGoalPoint: Bool = false
     var isWall: Bool = true
