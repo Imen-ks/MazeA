@@ -88,7 +88,7 @@ struct MapListView: View {
                             }
                             .alert(isPresented: $showAlert) {
                                 Alert(title: Text("Do you really want to proceed ?"), message: Text("This action will cause the deletion of data related to all the saved mazes."), primaryButton: .destructive(Text("Delete")) {
-                                    FileStorage.clear()
+                                    mapService.clear()
                                     mapService.maps.removeAll()
                                 },
                                       secondaryButton: .cancel())
@@ -112,7 +112,7 @@ struct MapListView: View {
     private func delete(at offsets: IndexSet){
         if let ndx = offsets.first {
             let item = mapService.maps.sorted(by: <)[ndx]
-            FileStorage.remove(item.key)
+            mapService.remove(item.key)
         }
     }
 }

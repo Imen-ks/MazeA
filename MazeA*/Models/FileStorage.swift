@@ -8,15 +8,20 @@
 import Foundation
 
 extension FileManager {
-    static var documentDirectoryUrl: URL {
+    fileprivate static var documentDirectoryUrl: URL {
         `default`.urls(for: .documentDirectory, in: .userDomainMask).first!
     }
 }
 
 struct FileStorage {
+    private init() {}
+    
+    static func getUrl(_ fileName: String) -> URL {
+        FileManager.documentDirectoryUrl.appending(path: fileName, directoryHint: .notDirectory)
+    }
     
     static func store<T: Encodable>(_ object: T, as fileName: String) {
-        let url = FileManager.documentDirectoryUrl.appending(path: fileName, directoryHint: .notDirectory)
+        let url = getUrl(fileName)
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -32,7 +37,7 @@ struct FileStorage {
     }
     
     static func retrieve<T: Decodable>(_ fileName: String) -> T? {
-        let url = FileManager.documentDirectoryUrl.appending(path: fileName, directoryHint: .notDirectory)
+        let url = getUrl(fileName)
         
         if !FileManager.default.fileExists(atPath: url.path) {
             print("File at path \(url.path) does not exist")
@@ -65,7 +70,7 @@ struct FileStorage {
     }
     
     static func remove(_ fileName: String) {
-        let url = FileManager.documentDirectoryUrl.appending(path: fileName, directoryHint: .notDirectory)
+        let url = getUrl(fileName)
         if FileManager.default.fileExists(atPath: url.path) {
             do {
                 try FileManager.default.removeItem(at: url)

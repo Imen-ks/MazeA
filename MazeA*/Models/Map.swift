@@ -42,7 +42,7 @@ extension Map {
     static func loadJson(fromAppBundle bundle: String?, fromFileSystem fileName: String?) -> Map {
         var url: URL
         if let fileName = fileName {
-            let checkUrl = FileManager.documentDirectoryUrl.appending(path: fileName, directoryHint: .notDirectory)
+            let checkUrl = FileStorage.getUrl(fileName)
             if FileManager.default.fileExists(atPath: checkUrl.path) {
                 url = checkUrl
             } else {

@@ -22,4 +22,12 @@ extension MapService {
             dict[file] = FileStorage.retrieve(file)
         })
     }
+    
+    func remove(_ fileName: String) {
+        FileStorage.remove(fileName)
+    }
+    
+    func clear() {
+        FileStorage.clear()
+    }
 }
