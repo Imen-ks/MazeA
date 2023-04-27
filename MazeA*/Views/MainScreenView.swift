@@ -106,10 +106,9 @@ struct MainScreenView: View {
                                      Alert(title: Text("This maze has been saved in your App !"), message: Text("Click the \"Load\" button to browse the list of all saved mazes."), dismissButton: .default(Text("Ok")))
                                  }
                              }
-                             
+                             Spacer()
                              MazeView()
-                                 .padding(.leading, 120)
-                             
+                             Spacer()
                              VStack {
                                  ButtonView(text: "Solve", image: "gear", orientation: .horizontal) {
                                      Task {
@@ -132,7 +131,6 @@ struct MainScreenView: View {
                                  }
                                  .disabled(viewModel.isSolving)
                              }
-                             .padding(.leading, 120)
                          }
                      }
                 }
