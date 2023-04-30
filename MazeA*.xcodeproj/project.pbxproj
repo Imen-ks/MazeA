@@ -10,7 +10,6 @@
 		A83B940529E9DFCA0065253B /* MazeA_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B940429E9DFCA0065253B /* MazeA_App.swift */; };
 		A83B940929E9DFCB0065253B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B940829E9DFCB0065253B /* Assets.xcassets */; };
 		A83B940C29E9DFCB0065253B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B940B29E9DFCB0065253B /* Preview Assets.xcassets */; };
-		A83B941629E9DFCB0065253B /* MazeA_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B941529E9DFCB0065253B /* MazeA_Tests.swift */; };
 		A83B942029E9DFCB0065253B /* MazeA_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B941F29E9DFCB0065253B /* MazeA_UITests.swift */; };
 		A83B942229E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B942129E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift */; };
 		A83B942F29E9E3370065253B /* MazeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B942E29E9E3370065253B /* MazeCell.swift */; };
@@ -30,6 +29,13 @@
 		A8851AC129EF771300D9313C /* CustomizedMazeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC029EF771300D9313C /* CustomizedMazeView.swift */; };
 		A8851AC429EFFEC000D9313C /* InputNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC329EFFEC000D9313C /* InputNumberView.swift */; };
 		A8851AC629F003C500D9313C /* SelectCoordinatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */; };
+		A89A8CF829FBDB25000B33EF /* MazeViewModel_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A8CF729FBDB25000B33EF /* MazeViewModel_Tests.swift */; };
+		A89A8CFA29FC40DE000B33EF /* FileStorage_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A8CF929FC40DE000B33EF /* FileStorage_Tests.swift */; };
+		A89A8CFC29FD88B1000B33EF /* Map_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A8CFB29FD88B1000B33EF /* Map_Tests.swift */; };
+		A89A8CFE29FD8CF1000B33EF /* MapSampleDataTest.json in Resources */ = {isa = PBXBuildFile; fileRef = A89A8CFD29FD8CF1000B33EF /* MapSampleDataTest.json */; };
+		A89A8D0029FD989E000B33EF /* AStarAlgorithm_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A8CFF29FD989E000B33EF /* AStarAlgorithm_Tests.swift */; };
+		A89A8D0229FDB944000B33EF /* Step_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A8D0129FDB944000B33EF /* Step_Tests.swift */; };
+		A89A8D0429FEEB2C000B33EF /* MapService_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89A8D0329FEEB2C000B33EF /* MapService_Tests.swift */; };
 		A8F00F2229F76BFC008E1B33 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F00F2129F76BFC008E1B33 /* Map.swift */; };
 		A8F00F2429F7B936008E1B33 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F00F2329F7B936008E1B33 /* FileStorage.swift */; };
 		A8F00F2629F7D088008E1B33 /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8F00F2529F7D088008E1B33 /* MapService.swift */; };
@@ -59,7 +65,6 @@
 		A83B940829E9DFCB0065253B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A83B940B29E9DFCB0065253B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A83B941129E9DFCB0065253B /* MazeA*Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MazeA*Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A83B941529E9DFCB0065253B /* MazeA_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeA_Tests.swift; sourceTree = "<group>"; };
 		A83B941B29E9DFCB0065253B /* MazeA*UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MazeA*UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83B941F29E9DFCB0065253B /* MazeA_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeA_UITests.swift; sourceTree = "<group>"; };
 		A83B942129E9DFCB0065253B /* MazeA_UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeA_UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -80,6 +85,13 @@
 		A8851AC029EF771300D9313C /* CustomizedMazeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizedMazeView.swift; sourceTree = "<group>"; };
 		A8851AC329EFFEC000D9313C /* InputNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputNumberView.swift; sourceTree = "<group>"; };
 		A8851AC529F003C500D9313C /* SelectCoordinatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCoordinatesView.swift; sourceTree = "<group>"; };
+		A89A8CF729FBDB25000B33EF /* MazeViewModel_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MazeViewModel_Tests.swift; sourceTree = "<group>"; };
+		A89A8CF929FC40DE000B33EF /* FileStorage_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage_Tests.swift; sourceTree = "<group>"; };
+		A89A8CFB29FD88B1000B33EF /* Map_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_Tests.swift; sourceTree = "<group>"; };
+		A89A8CFD29FD8CF1000B33EF /* MapSampleDataTest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MapSampleDataTest.json; sourceTree = "<group>"; };
+		A89A8CFF29FD989E000B33EF /* AStarAlgorithm_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStarAlgorithm_Tests.swift; sourceTree = "<group>"; };
+		A89A8D0129FDB944000B33EF /* Step_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step_Tests.swift; sourceTree = "<group>"; };
+		A89A8D0329FEEB2C000B33EF /* MapService_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService_Tests.swift; sourceTree = "<group>"; };
 		A8F00F2129F76BFC008E1B33 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		A8F00F2329F7B936008E1B33 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		A8F00F2529F7D088008E1B33 /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
@@ -154,7 +166,13 @@
 		A83B941429E9DFCB0065253B /* MazeA*Tests */ = {
 			isa = PBXGroup;
 			children = (
-				A83B941529E9DFCB0065253B /* MazeA_Tests.swift */,
+				A89A8CFD29FD8CF1000B33EF /* MapSampleDataTest.json */,
+				A89A8CF929FC40DE000B33EF /* FileStorage_Tests.swift */,
+				A89A8CFF29FD989E000B33EF /* AStarAlgorithm_Tests.swift */,
+				A89A8D0129FDB944000B33EF /* Step_Tests.swift */,
+				A89A8CFB29FD88B1000B33EF /* Map_Tests.swift */,
+				A89A8CF729FBDB25000B33EF /* MazeViewModel_Tests.swift */,
+				A89A8D0329FEEB2C000B33EF /* MapService_Tests.swift */,
 			);
 			path = "MazeA*Tests";
 			sourceTree = "<group>";
@@ -317,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A89A8CFE29FD8CF1000B33EF /* MapSampleDataTest.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +381,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A83B941629E9DFCB0065253B /* MazeA_Tests.swift in Sources */,
+				A89A8D0429FEEB2C000B33EF /* MapService_Tests.swift in Sources */,
+				A89A8D0029FD989E000B33EF /* AStarAlgorithm_Tests.swift in Sources */,
+				A89A8CFA29FC40DE000B33EF /* FileStorage_Tests.swift in Sources */,
+				A89A8D0229FDB944000B33EF /* Step_Tests.swift in Sources */,
+				A89A8CFC29FD88B1000B33EF /* Map_Tests.swift in Sources */,
+				A89A8CF829FBDB25000B33EF /* MazeViewModel_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,17 +39,17 @@ struct Map: Identifiable, Codable {
 }
 
 extension Map {
-    static func loadJson(fromAppBundle bundle: String?, fromFileSystem fileName: String?) -> Map {
+    static func loadJson(bundle: Bundle = Bundle.main, fromAppBundle urlString: String? = nil, fromFileSystem fileName: String? = nil) -> Map {
         var url: URL
         if let fileName = fileName {
             let checkUrl = FileStorage.getUrl(fileName)
             if FileManager.default.fileExists(atPath: checkUrl.path) {
                 url = checkUrl
             } else {
-                url = Bundle.main.url(forResource: bundle, withExtension: "json")!
+                url = bundle.url(forResource: urlString, withExtension: "json")!
             }
         } else {
-            url = Bundle.main.url(forResource: bundle, withExtension: "json")!
+            url = bundle.url(forResource: urlString, withExtension: "json")!
         }
                 
         let decoder = JSONDecoder()
@@ -69,6 +69,6 @@ extension Map {
 
 extension Map: Comparable {
     static func < (lhs: Map, rhs: Map) -> Bool {
-        return String(describing: lhs.id) < String(describing: rhs.id)
+        return lhs.id.uuidString < rhs.id.uuidString
      }
 }

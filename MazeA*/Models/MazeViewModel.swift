@@ -125,6 +125,9 @@ extension Maze {
 extension Maze {
     // Adjacent cells for a given cell
     func adjacentTopCellForCell(atCoordinate: CGPoint) -> CGPoint? {
+        if Int(atCoordinate.x) >= map.rows || Int(atCoordinate.y) >= map.columns {
+            return nil
+        }
         if let coordinate = map.cells[Int(atCoordinate.x)][Int(atCoordinate.y)].coordinate {
             if coordinate.x > 0 {
                 return CGPoint(x: coordinate.x-1, y: coordinate.y)
@@ -134,6 +137,9 @@ extension Maze {
     }
     
     func adjacentLeftCellForCell(atCoordinate: CGPoint) -> CGPoint? {
+        if Int(atCoordinate.x) >= map.rows || Int(atCoordinate.y) >= map.columns {
+            return nil
+        }
         if let coordinate = map.cells[Int(atCoordinate.x)][Int(atCoordinate.y)].coordinate {
             if coordinate.y > 0 {
                 return CGPoint(x: coordinate.x, y: coordinate.y-1)
@@ -143,6 +149,9 @@ extension Maze {
     }
     
     func adjacentBottomCellForCell(atCoordinate: CGPoint) -> CGPoint? {
+        if Int(atCoordinate.x) >= map.rows || Int(atCoordinate.y) >= map.columns {
+            return nil
+        }
         if let coordinate = map.cells[Int(atCoordinate.x)][Int(atCoordinate.y)].coordinate {
             if coordinate.x < CGFloat(map.rows-1) {
                 return CGPoint(x: coordinate.x+1, y: coordinate.y)
@@ -152,6 +161,9 @@ extension Maze {
     }
     
     func adjacentRightCellForCell(atCoordinate: CGPoint) -> CGPoint? {
+        if Int(atCoordinate.x) >= map.rows || Int(atCoordinate.y) >= map.columns {
+            return nil
+        }
         if let coordinate = map.cells[Int(atCoordinate.x)][Int(atCoordinate.y)].coordinate {
             if coordinate.y < CGFloat(map.columns-1) {
                 return CGPoint(x: coordinate.x, y: coordinate.y+1)
@@ -183,5 +195,11 @@ extension Maze {
         }
         
         return maze
+    }
+}
+
+extension Maze: Equatable {
+    static func == (lhs: Maze, rhs: Maze) -> Bool {
+        lhs.map.id == rhs.map.id
     }
 }
