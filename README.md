@@ -10,7 +10,7 @@ Note that the Manhattan distance is the heuristic function chosen for this proje
 
 ## Usage
 
-Open the `NewsApp.xcodeproj` file with Xcode and build the application in the simulator or on a device.
+Open the `MazeA*.xcodeproj` file with Xcode and build the application in the simulator or on a device.
 
 ## Available features
 
