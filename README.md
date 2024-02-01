@@ -1,5 +1,7 @@
 # Maze A*
 
+![featured](https://github.com/Imen-ks/MazeA/blob/main/MazeA*/Assets.xcassets/Images/Maze.png)
+
 Xcode project relating to an iOS application for maze solving using [A* pathfinding](https://en.wikipedia.org/wiki/A*_search_algorithm).
 
 A* (pronounced 'A-star') is a path search algorithm used to find the shortest path from a starting point to a goal.  With `n` being the next node on the path, A* selects the path that minimizes : $$f(n) = g(n) + h(n)$$
